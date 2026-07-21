@@ -148,6 +148,9 @@ export default function AttendForm({ meetingId, meetingTitle }: { meetingId: str
                     <SelectContent className="rounded-xl shadow-xl">
                       <SelectItem value="សិក្ខាបនធារី" className="py-2.5">សិក្ខាបនធារី</SelectItem>
                       <SelectItem value="នាយក" className="py-2.5">នាយក</SelectItem>
+                      <SelectItem value="នាយករង" className="py-2.5">នាយករង</SelectItem>
+                      <SelectItem value="បុគ្គលិកទីចាត់ការ" className="py-2.5">បុគ្គលិកទីចាត់ការ</SelectItem>
+                      <SelectItem value="លេខា" className="py-2.5">លេខា</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage className="text-xs text-red-500" />

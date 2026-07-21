@@ -120,7 +120,37 @@ export default function DisplayScreen({ meetingId, meetingTitle, originUrl }: { 
                 </div>
               ) : (
                 attendees.map((a, i) => {
-                  const isDirector = a.role === 'នាយក';
+                  const getRoleBadge = (role: string) => {
+                    switch (role) {
+                      case 'នាយក':
+                        return (
+                          <span className="bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                            <ShieldCheck className="w-3 h-3" /> នាយក
+                          </span>
+                        )
+                      case 'នាយករង':
+                        return (
+                          <span className="bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                            <ShieldCheck className="w-3 h-3" /> នាយករង
+                          </span>
+                        )
+                      case 'លេខា':
+                        return (
+                          <span className="bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                            លេខា
+                          </span>
+                        )
+                      case 'បុគ្គលិកទីចាត់ការ':
+                        return (
+                          <span className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                            បុគ្គលិកទីចាត់ការ
+                          </span>
+                        )
+                      default:
+                        return null
+                    }
+                  }
+                  const badge = getRoleBadge(a.role);
                   return (
                     <div 
                       key={a.id} 
@@ -135,13 +165,9 @@ export default function DisplayScreen({ meetingId, meetingTitle, originUrl }: { 
                         <div className="flex flex-col">
                           <span className="text-lg font-bold text-slate-100 flex items-center gap-2">
                             {a.name}
-                            {isDirector && (
-                              <span className="bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
-                                <ShieldCheck className="w-3 h-3" /> {a.role}
-                              </span>
-                            )}
+                            {badge}
                           </span>
-                          {!isDirector && (
+                          {!badge && (
                             <span className="text-xs text-slate-400 mt-0.5">{a.role}</span>
                           )}
                         </div>
