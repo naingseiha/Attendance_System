@@ -27,10 +27,22 @@ export default async function ReportPage({ params }: { params: { meetingId: stri
         
         {/* Ministry Letterhead */}
         <div className="flex justify-between items-start mb-12">
-          {/* Left Letterhead (Ministry / Org) */}
-          <div className="text-center space-y-1">
-            <h3 className="font-moul text-xs sm:text-sm text-slate-800">ក្រសួងអប់រំ យុវជន និងកីឡា</h3>
-            <p className="text-xs font-semibold text-slate-600">សាលារៀន / ស្ថាប័នប្រជុំជាតិ</p>
+          {/* Left Letterhead (Ministry / Org) - Pushed down by mt-10 (approx. 3-4 line height) */}
+          <div className="text-center space-y-1.5 mt-10">
+            <h3 
+              contentEditable 
+              suppressContentEditableWarning
+              className="font-moul text-xs sm:text-sm text-slate-800 outline-none border-b border-dashed border-transparent hover:border-slate-350 focus:border-blue-500 focus:bg-blue-50/30 px-2 py-0.5 rounded transition-all print:border-none print:bg-transparent print:p-0 cursor-text"
+            >
+              ក្រសួងអប់រំ យុវជន និងកីឡា
+            </h3>
+            <p 
+              contentEditable 
+              suppressContentEditableWarning
+              className="text-xs font-semibold text-slate-600 outline-none border-b border-dashed border-transparent hover:border-slate-350 focus:border-blue-500 focus:bg-blue-50/30 px-2 py-0.5 rounded transition-all print:border-none print:bg-transparent print:p-0 cursor-text"
+            >
+              វិទ្យាល័យ ហ៊ុនសែន ស្វាយធំ
+            </p>
             <div className="w-16 h-[0.5px] bg-slate-300 mx-auto mt-2" />
           </div>
 
@@ -71,38 +83,38 @@ export default async function ReportPage({ params }: { params: { meetingId: stri
             <h4 className="font-moul text-xs text-slate-800">
               បញ្ជីឈ្មោះអ្នកចូលរួមសរុប
             </h4>
-            <span className="text-xs font-semibold text-slate-500 bg-slate-105 px-2.5 py-1 rounded-md border">
+            <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md border">
               សរុប {meeting.attendances.length} នាក់
             </span>
           </div>
 
-          <table className="w-full border-collapse border border-slate-300 text-sm">
+          <table className="w-full border-collapse border border-slate-200 text-sm">
             <thead>
               <tr className="bg-slate-50 text-slate-700">
-                <th className="border border-slate-300 py-3 px-2 text-center w-14 font-semibold">ល.រ</th>
-                <th className="border border-slate-300 py-3 px-4 text-left font-semibold">ឈ្មោះ និងនាមត្រកូល</th>
-                <th className="border border-slate-300 py-3 px-3 text-center w-36 font-semibold">តួនាទី</th>
-                <th className="border border-slate-300 py-3 px-4 text-center w-40 font-semibold">លេខទូរសព្ទ</th>
-                <th className="border border-slate-300 py-3 px-3 text-center w-36 font-semibold">ម៉ោងចុះវត្តមាន</th>
-                <th className="border border-slate-300 py-3 px-2 text-center w-28 font-semibold">ផ្សេងៗ</th>
+                <th className="border border-slate-200 py-3 px-2 text-center w-12 font-semibold whitespace-nowrap">ល.រ</th>
+                <th className="border border-slate-200 py-3 px-4 text-left font-semibold min-w-[240px] whitespace-nowrap">ឈ្មោះ និងនាមត្រកូល</th>
+                <th className="border border-slate-200 py-3 px-3 text-center w-28 font-semibold whitespace-nowrap">តួនាទី</th>
+                <th className="border border-slate-200 py-3 px-4 text-center w-36 font-semibold whitespace-nowrap">លេខទូរសព្ទ</th>
+                <th className="border border-slate-200 py-3 px-3 text-center w-28 font-semibold whitespace-nowrap">ម៉ោងចុះវត្តមាន</th>
+                <th className="border border-slate-200 py-3 px-2 text-center w-20 font-semibold whitespace-nowrap">ផ្សេងៗ</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               {meeting.attendances.map((a, i) => (
-                <tr key={a.id} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="border border-slate-300 py-3 px-2 text-center text-slate-500 font-medium">{i + 1}</td>
-                  <td className="border border-slate-300 py-3 px-4 font-bold text-slate-800">{a.name}</td>
-                  <td className="border border-slate-300 py-3 px-3 text-center text-slate-600 font-medium">{a.role}</td>
-                  <td className="border border-slate-300 py-3 px-4 text-center font-mono text-slate-600">{a.phone}</td>
-                  <td className="border border-slate-300 py-3 px-3 text-center text-slate-500">
+                <tr key={a.id} className="hover:bg-slate-50/30 transition-colors">
+                  <td className="border border-slate-200 py-3.5 px-2 text-center text-slate-500 font-medium text-xs">{i + 1}</td>
+                  <td className="border border-slate-200 py-3.5 px-4 font-bold text-slate-855 whitespace-nowrap">{a.name}</td>
+                  <td className="border border-slate-200 py-3.5 px-3 text-center text-slate-600 font-medium text-xs">{a.role}</td>
+                  <td className="border border-slate-200 py-3.5 px-4 text-center font-mono text-xs text-slate-600">{a.phone}</td>
+                  <td className="border border-slate-200 py-3.5 px-3 text-center text-xs text-slate-500">
                     {format(new Date(a.scannedAt), 'HH:mm')}
                   </td>
-                  <td className="border border-slate-300 py-3 px-2 text-center"></td>
+                  <td className="border border-slate-200 py-3.5 px-2 text-center"></td>
                 </tr>
               ))}
               {meeting.attendances.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="border border-slate-300 py-8 text-center text-slate-400 text-xs italic">
+                  <td colSpan={6} className="border border-slate-200 py-8 text-center text-slate-400 text-xs italic">
                     មិនទាន់មានទិន្នន័យអ្នកចូលរួមនៅឡើយទេ
                   </td>
                 </tr>
